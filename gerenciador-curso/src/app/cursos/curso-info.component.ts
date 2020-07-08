@@ -10,19 +10,19 @@ import {CursoService} from './curso.servico';
 
 export class CursoInfoComponent implements OnInit {
 
-  curse: Curso;
+  curso: Curso;
 
   constructor(private activatedRoute: ActivatedRoute, private cursoService: CursoService) {}
 
    ngOnInit(): void {
     this.cursoService.recuperarPeloId(+this.activatedRoute.snapshot.paramMap.get('id')).subscribe({
-      next: curse => this.curse = curse,
+      next: curso => this.curso = curso,
       error: err => console.error('Error: ', err)
     });
    }
    salvar(): void {
-    this.cursoService.salvar(this.curse).subscribe({
-      next: curse => console.log('Salvo com sucesso', curse),
+    this.cursoService.salvar(this.curso).subscribe({
+      next: curso => console.log('Salvo com sucesso', curso),
       error: err => console.log('Error', err)
     });
    }

@@ -9,29 +9,28 @@ import {Observable} from 'rxjs';
 
 export class CursoService {
 
-  private cursoUrl = 'http://localhost:3100/api/courses';
+  private cursosUrl = 'http://localhost:3100/api/courses';
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) {}
 
   retrieveAll(): Observable<Curso[]> {
-    return this.httpClient.get<Curso[]>(this.cursoUrl);
+    return this.httpClient.get<Curso[]>(this.cursosUrl);
   }
 
   recuperarPeloId(id: number): Observable<Curso> {
-    return this.httpClient.get<Curso>(`${this.cursoUrl}/${id}`);
+    return this.httpClient.get<Curso>(`${this.cursosUrl}/${id}`);
   }
 
   salvar(curso: Curso): Observable<Curso>{
     if (curso.id){
-      return this.httpClient.put<Curso>(`${this.cursoUrl}/${curso.id}`, curso);
+      return this.httpClient.put<Curso>(`${this.cursosUrl}/${curso.id}`, curso);
     }else{
-      return this.httpClient.put<Curso>(`${this.cursoUrl}`, curso);
+      return this.httpClient.post<Curso>(`${this.cursosUrl}`, curso);
     }
   }
 
   deletarPorId(id: number): Observable<any> {
-     return this.httpClient.delete<any>(`${this.cursoUrl}/${id}`);
+     return this.httpClient.delete<any>(`${this.cursosUrl}/${id}`);
  }
 
 }

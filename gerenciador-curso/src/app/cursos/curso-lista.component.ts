@@ -9,12 +9,9 @@ export class CursoListaComponent implements OnInit {
 
   filtroCursos: Curso[] = [];
 
-  // tslint:disable-next-line:variable-name
   _cursos: Curso[] = [];
 
-
-  // tslint:disable-next-line:variable-name
-  _filtrar: string;
+  _filterBy: string;
 
   constructor(private cursoService: CursoService) {}
 
@@ -30,7 +27,7 @@ export class CursoListaComponent implements OnInit {
         this.filtroCursos = this._cursos;
       },
       error: err => console.log('Error', err)
-    });
+    })
   }
 
   deletar(cursoId: number): void {
@@ -43,14 +40,13 @@ export class CursoListaComponent implements OnInit {
     })
   }
 
-  set filtro(value: string){
-    this._filtrar = value;
+  set filter(value: string){
+    this._filterBy = value;
 
-    this.filtroCursos = this._cursos.filter((curso: Curso) => curso.nome.toLocaleLowerCase().indexOf(this._filtrar.toLocaleLowerCase()) > -1);
+    this.filtroCursos = this._cursos.filter((curso: Curso) => curso.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
   }
 
-  // tslint:disable-next-line:typedef
-  get filtro(){
-    return this._filtrar;
+  get filter(){
+    return this._filterBy;
   }
 }

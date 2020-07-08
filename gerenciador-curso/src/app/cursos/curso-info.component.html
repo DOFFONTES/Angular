@@ -3,13 +3,11 @@
 
 <hr/>
 
-<form #cursoForm="ngForm" *ngIf="curse">
+<form #cursoForm="ngForm" *ngIf="curso">
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Nome:</label>
       <div class="col-sm-10">
-        <input [(ngModel)]="curse.nome" required name="name" #courseName="ngModel" [ngClass]="{'is-invalid': courseName.invalid}" class="form-control">
-        {{ courseName.value }}
-        {{ courseName.valid }}
+        <input [(ngModel)]="curso.nome" required name="nome" #cursoNome="ngModel" [ngClass]="{'is-invalid': cursoNome.invalid}" class="form-control">
 
         <div class="invalid-feedback">
            <span>Nome do curso não é válido</span>
@@ -20,9 +18,7 @@
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Preço:</label>
     <div class="col-sm-10">
-      <input [(ngModel)]="curse.preco" required name="preco" type="number" #cursoPreco="ngModel" [ngClass]="{'is-invalid': cursoPreco.invalid}" class="form-control">
-      {{ cursoPreco.value }}
-      {{ cursoPreco.valid }}
+      <input [(ngModel)]="curso.preco" required name="preco" type="number" #cursoPreco="ngModel" [ngClass]="{'is-invalid': cursoPreco.invalid}" class="form-control">
 
       <div class="invalid-feedback">
         <span>Preço do curso não é válido</span>
@@ -33,9 +29,7 @@
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Avaliacao:</label>
     <div class="col-sm-10">
-      <input [(ngModel)]="curse.avaliacao" required name="avaliacao" type="number" #cursoAvaliacao="ngModel" [ngClass]="{'is-invalid': cursoAvaliacao.invalid}" class="form-control">
-      {{ cursoAvaliacao.value }}
-      {{ cursoAvaliacao.valid }}
+      <input [(ngModel)]="curso.avaliacao" required name="avaliacao" type="number" #cursoAvaliacao="ngModel" [ngClass]="{'is-invalid': cursoAvaliacao.invalid}" class="form-control">
 
       <div class="invalid-feedback">
         <span>Avaliação do curso não é válido</span>
@@ -46,9 +40,7 @@
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Descrição:</label>
     <div class="col-sm-10">
-      <textarea [(ngModel)]="curse.descricao" required name="descricao" #cursoDescricao="ngModel" [ngClass]="{'is-invalid': cursoDescricao.invalid}" class="form-control"></textarea>
-      {{ cursoDescricao.value }}
-      {{ cursoDescricao.valid }}
+      <textarea [(ngModel)]="curso.descricao" required name="descricao" #cursoDescricao="ngModel" [ngClass]="{'is-invalid': cursoDescricao.invalid}" class="form-control"></textarea>
 
       <div class="invalid-feedback">
         <span>Avaliação do curso não é válido</span>
@@ -57,7 +49,7 @@
   </div>
 
   <button [disabled]="cursoForm.invalid" (click)="salvar()" class="btn btn-primary m-2">Salvar</button>
-  <button [routerLink]="['/inicio']" class="btn btn-secondary">Voltar</button>
+  <button [routerLink]="['/cursos']" class="btn btn-secondary">Voltar</button>
 </form>
 
 
